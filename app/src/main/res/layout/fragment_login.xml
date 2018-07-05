@@ -24,15 +24,11 @@
             android:layout_margin="10dp"
             android:orientation="horizontal">
 
-            <!--Icon-->
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_action_user" />
+
 
             <!--TxtField-->
             <EditText
+                android:background="@drawable/user_textfield"
                 android:id="@+id/edtFLogin_User"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,15 +43,11 @@
             android:layout_margin="10dp"
             android:orientation="horizontal">
 
-            <!--Icon-->
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_action_password" />
+
 
             <!--TxtField-->
             <EditText
+                android:background="@drawable/password_textfield"
                 android:id="@+id/edtFLogin_Password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,12 +57,11 @@
 
         <!--Login-->
         <Button
+            android:background="@drawable/bg_button"
             android:id="@+id/btnFLogin_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:textColor="#ffffff"
             android:text="LOGIN"
             android:textStyle="bold" />
     </LinearLayout>
