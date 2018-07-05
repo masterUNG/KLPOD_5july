@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+
+        android:textSize="@dimen/h2"
+        android:layout_margin="@dimen/margin1"
+        android:text="Signature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/edtSNName"
+        android:hint="Name - Surname"
+        android:layout_marginLeft="@dimen/h2"
+        android:layout_marginRight="@dimen/margin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_margin="@dimen/margin1"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:id="@+id/linSNSign"
+       android:background="#ffffff"
+
+        >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linSNButton"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+
+        <Button
+            android:id="@+id/btnSNSave"
+            android:text="Save"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnSNClear"
+            android:text="Clear"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
