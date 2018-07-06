@@ -57,6 +57,12 @@ public class PlanDetailActivity extends AppCompatActivity{
 
         //confirm Button Click
         confirmButtonClick();
+    }   // Main Method
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+
     }
 
     private void confirmButtonClick() {

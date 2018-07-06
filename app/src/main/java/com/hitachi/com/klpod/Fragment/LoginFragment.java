@@ -42,81 +42,97 @@ public class LoginFragment extends Fragment {
     private void LoginCheck() {
 
         Button button = getView().findViewById(R.id.btnFLogin_Login);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText userEditText = getView().findViewById(R.id.edtFLogin_User);
-                EditText passEditText = getView().findViewById(R.id.edtFLogin_Password);
-
-                String userString = userEditText.getText().toString().trim();
-                String passString = passEditText.getText().toString().trim();
-
-                MasterAlert masterAlert = new MasterAlert(getActivity());
-                if (userString.isEmpty() || passString.isEmpty()) {
-                    masterAlert.normalDialog("Warning!", "Please fill all data!");
-                } else {
-                    try {
-                        MasterServiceFunction masterServiceFunction = new MasterServiceFunction();
-                        DeviceInfo deviceInfo = new DeviceInfo(getContext());
-
-                        FuncDBAccess funcDBAccess = new FuncDBAccess(getActivity());
-                        funcDBAccess.execute(masterServiceFunction.getGetUserLogin()
-                                +"/"+ userString
-                                +"/"+ passString
-                                +"/"+ deviceInfo.IMEI());
-
-                        Log.d("KLTag","IMEI ==> " + deviceInfo.IMEI());
-
-
-                        String resultJSON = funcDBAccess.SetJSONResult(funcDBAccess.get());
-
-                        Log.d("KLTag","JSON ==> " + resultJSON);
-                        JSONArray jsonArray = new JSONArray(resultJSON);
-
-                        String resultLogin = "" ;
-                        String vehiclesCode = "" ;
-
-                        if (jsonArray.length() > 0) {
-                            JSONObject jsonObject = jsonArray.getJSONObject(0);
-                            resultLogin = jsonObject.getString("Result");
-                            vehiclesCode = jsonObject.getString("VehiclesCode");
-                            Log.d("KLTag", "JSON ==> " + vehiclesCode);
-
-                        } else {
-                            masterAlert.normalDialog("Warning!", "Cannot Login! Please try again.");
-                        }
-
-                        switch (resultLogin) {
-                            case "Valid" : Toast.makeText(getActivity(), "Login By : " + vehiclesCode, Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getActivity(),PlanListActivity.class);
-                                intent.putExtra("VehiclesCode", vehiclesCode);
+                Intent intent = new Intent(getActivity(),PlanListActivity.class);
+                                intent.putExtra("VehiclesCode", "V180603");
                                 startActivity(intent);
                                 getActivity().finish();
-                                break;
-                            case  "Duplicate" :  masterAlert.normalDialog("Warning!", "Duplicate login! Please logout");
-                                break;
-                            case  "Invalid" : masterAlert.normalDialog("Warning!", "Invalid Username or Password");
-                                break;
-                            case "NORegister" : masterAlert.normalDialog("Warning!", "This mobile not register yet.");
-                                break;
-                            default: masterAlert.normalDialog("Warning!", "Cannot Login! Please try again.");
-                                break;
-
-                        }
-
-
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                }
             }
         });
 
+
     }
+
+//    private void LoginCheck() {
+//
+//        Button button = getView().findViewById(R.id.btnFLogin_Login);
+//
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                EditText userEditText = getView().findViewById(R.id.edtFLogin_User);
+//                EditText passEditText = getView().findViewById(R.id.edtFLogin_Password);
+//
+//                String userString = userEditText.getText().toString().trim();
+//                String passString = passEditText.getText().toString().trim();
+//
+//                MasterAlert masterAlert = new MasterAlert(getActivity());
+//                if (userString.isEmpty() || passString.isEmpty()) {
+//                    masterAlert.normalDialog("Warning!", "Please fill all data!");
+//                } else {
+//                    try {
+//                        MasterServiceFunction masterServiceFunction = new MasterServiceFunction();
+//                        DeviceInfo deviceInfo = new DeviceInfo(getContext());
+//
+//                        FuncDBAccess funcDBAccess = new FuncDBAccess(getActivity());
+//                        funcDBAccess.execute(masterServiceFunction.getGetUserLogin()
+//                                +"/"+ userString
+//                                +"/"+ passString
+//                                +"/"+ deviceInfo.IMEI());
+//
+//                        Log.d("KLTag","IMEI ==> " + deviceInfo.IMEI());
+//
+//
+//                        String resultJSON = funcDBAccess.SetJSONResult(funcDBAccess.get());
+//
+//                        Log.d("KLTag","JSON ==> " + resultJSON);
+//                        JSONArray jsonArray = new JSONArray(resultJSON);
+//
+//                        String resultLogin = "" ;
+//                        String vehiclesCode = "" ;
+//
+//                        if (jsonArray.length() > 0) {
+//                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+//                            resultLogin = jsonObject.getString("Result");
+//                            vehiclesCode = jsonObject.getString("VehiclesCode");
+//                            Log.d("KLTag", "JSON ==> " + vehiclesCode);
+//
+//                        } else {
+//                            masterAlert.normalDialog("Warning!", "Cannot Login! Please try again.");
+//                        }
+//
+//                        switch (resultLogin) {
+//                            case "Valid" : Toast.makeText(getActivity(), "Login By : " + vehiclesCode, Toast.LENGTH_SHORT).show();
+//                                Intent intent = new Intent(getActivity(),PlanListActivity.class);
+//                                intent.putExtra("VehiclesCode", vehiclesCode);
+//                                startActivity(intent);
+//                                getActivity().finish();
+//                                break;
+//                            case  "Duplicate" :  masterAlert.normalDialog("Warning!", "Duplicate login! Please logout");
+//                                break;
+//                            case  "Invalid" : masterAlert.normalDialog("Warning!", "Invalid Username or Password");
+//                                break;
+//                            case "NORegister" : masterAlert.normalDialog("Warning!", "This mobile not register yet.");
+//                                break;
+//                            default: masterAlert.normalDialog("Warning!", "Cannot Login! Please try again.");
+//                                break;
+//
+//                        }
+//
+//
+//
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            }
+//        });
+//
+//    }
 
 
     @Nullable
